@@ -1,0 +1,9 @@
+[user]
+	email = federico.fontana2000@gmail.com
+	name = fedfontana
+[init]
+	defaultBranch = master
+[push]
+	autoSetupRemote = true
+[core]
+	excludesfile = /Users/fonta/.gitignore_global
