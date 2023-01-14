@@ -51,7 +51,12 @@ alias rmj='find . -name "*.class" -exec rm -f {} \;'
 alias -g ...='../..'
 alias -g ....='../../..'
 
+# dotfiles management
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dota='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME add'
+alias dotc='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME commit -m'
+alias dotp='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME push'
+alias dotst='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME status'
 
 #function d () {
 #  if [[ -n $1 ]]; then
