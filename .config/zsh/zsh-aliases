@@ -51,7 +51,7 @@ alias rmj='find . -name "*.class" -exec rm -f {} \;'
 alias -g ...='../..'
 alias -g ....='../../..'
 
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 #function d () {
 #  if [[ -n $1 ]]; then
