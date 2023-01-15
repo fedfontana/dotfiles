@@ -1,61 +1,54 @@
-#TODO band aid fix, move it somewhere else
-#autoload -Uz compinit
-#compinit
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-#https://github.com/ohmyzsh/ohmyzsh/blob/master/themes/eastwood.zsh-theme
-#source ~/.config/zsh/eastwood.zsh
-export ZSHCONFIGDIR=$HOME/.config/zsh
+autoload -Uz compinit compdef colors
+compinit
+colors
 
-# Take advantage of $LS_COLORS for completion as well.
-#zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# Some useful options (man zshoptions)
+setopt auto_cd
+setopt multios
 
-# some useful options (man zshoptions)
-#setopt auto_cd
-#setopt multios #??
-#setopt prompt_subst #??
-#setopt auto_pushd
-#setopt pushd_ignore_dups
-#setopt pushdminus
-
-# from oh-my-zsh
-# History command configuration
-#setopt extended_history       # record timestamp of command in HISTFILE
-#setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
-#setopt hist_ignore_dups       # ignore duplicated commands history list
-#setopt hist_ignore_space      # ignore commands that start with space
-# Other
-#setopt long_list_jobs
-
-#setopt extendedglob nomatch
-#setopt interactive_comments
-#stty stop undef		# Disable ctrl-s to freeze terminal.
-#zle_highlight=('paste:none')
-
-# from ohmyzsh --- completion stuff
-# unsetopt menu_complete # do not autoselect the first completion entry
-#setopt menu_complete
-#unsetopt flowcontrol
-#setopt auto_menu # show completion menu on successive tab press
-#setopt complete_in_word
-#setopt always_to_end
-
-# beeping is annoying
+# Disable beeping
 #unsetopt BEEP
 
-#zstyle ':completion:*' menu select
-# zstyle ':completion::complete:lsof:*' menu yes select
-#zstyle ':completion:*' special-dirs true # complete . and .. special dirs
+# History command configuration
+# Remove unnecessary blanks before adding a command to the history
+setopt hist_reduce_blanks
+# Delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_expire_dups_first
+# Ignore commands that start with space
+setopt hist_ignore_space
+
+# Allow extended pattern matching
+setopt extendedglob
+# Allow comments in terminal
+setopt interactive_comments
+#zle_highlight=('paste:none')
+
+# completion stuff
+#unsetopt menu_complete # do not autoselect the first completion entry
+#setopt menu_complete
+unsetopt flowcontrol
+#setopt auto_menu # show completion menu on successive tab press
+#setopt complete_in_word
+setopt always_to_end
+
+# Take advantage of $LS_COLORS for completion as well.
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+zstyle ':completion:*' menu select
+#zstyle ':completion::complete:lsof:*' menu yes select
 #zmodload zsh/complist
-# compinit
-#_comp_options+=(globdots)		# Include hidden files.
 
-#autoload -U up-line-or-beginning-search
-#autoload -U down-line-or-beginning-search
-#zle -N up-line-or-beginning-search
-#zle -N down-line-or-beginning-search
+# Include hidden files in completion menu
+_comp_options+=(globdots)
 
-# Colors
-#autoload -Uz colors && colors
+# Match current imput to history items
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+export ZSHCONFIGDIR=$HOME/.config/zsh
 
 # Useful Functions
 source "$ZSHCONFIGDIR/zsh-functions"
@@ -71,6 +64,13 @@ zsh_add_plugin "zsh-users/zsh-completions"
 zsh_add_plugin "hlissner/zsh-autopair"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 eval "$(starship init zsh)"
+
+# Setup fzf
+if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+fi
+# Use fzf key bindings
+source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"

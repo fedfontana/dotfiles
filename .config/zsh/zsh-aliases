@@ -1,5 +1,7 @@
+# Update zsh plugins
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
+# Open zsh config files in editor
 alias zshrc='nvim ~/.zshrc'
 alias zaliases='nvim ~/.config/zsh/zsh-aliases'
 alias zexports='nvim ~/.config/zsh/zsh-exports'
@@ -14,31 +16,34 @@ alias diff='diff --color'
 alias psmem='ps auxf | sort -nr -k 4 | head -5'
 alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 
-
 alias r='ranger'
 alias o='open'
 
+# Python
 alias py='python3'
 alias pip='pip3'
 
+# List
 alias ls='ls -lhH --color=auto'
 alias l='ls -lhH --color=auto'
 alias lsa='ls -AlhH --color=auto'
 alias la='ls -AlhH --color=auto'
 alias el='exa -lah --git --group-directories-first'
 
+# Git
+alias gpl='git pull'
 alias ga='git add'
 alias gaa='git add .'
-alias gc='git commit -m'
-alias gp='git push'
-alias gpl='git pull'
-alias gco='git checkout'
 alias gst='git status'
+alias gd='git diff'
+alias gc='git commit -m'
+alias gcam='git commit --amend'
+alias gp='git push'
+alias gco='git checkout'
 alias glog='git log --graph --abbrev-commit --decorate --all --format=format:"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n""          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)"'
 alias gbr='open $(git remote get-url origin | sed -e "s/git\@/https:\/\//;s/:/\//2") &>/dev/null'
-alias gcam='git commit --amend'
-alias gd='git diff'
 
+# Editors
 alias c='code'
 alias v='nvim'
 alias vi='nvim'
@@ -47,7 +52,9 @@ alias neovim='nvim'
 
 alias bat='bat --color=always --decorations=always --paging --tabs=2'
 
+# Remove all .class files in the current directory (recursively)
 alias rmj='find . -name "*.class" -exec rm -f {} \;'
+
 alias -g ...='../..'
 alias -g ....='../../..'
 
@@ -68,36 +75,35 @@ alias dotst='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME status'
 #compdef _dirs d
 
 function venv {
-        [ -d ./venv ] || python3 -m venv venv
-        source ./venv/bin/activate
+    [ -d ./venv ] || python3 -m venv venv
+    source ./venv/bin/activate
 }
 
 function mckdir {
-        mkdir -p $@ && cd ${@:$#}
+    mkdir -p $@ && cd ${@:$#}
 }
-
 
 function extract
 {
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1   ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *.deb)       ar x $1      ;;
-      *.tar.xz)    tar xf $1    ;;
-      *.tar.zst)   unzstd $1    ;;
-      *)           echo "'$1' cannot be extracted via extract()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1   ;;
+            *.tar.gz)    tar xzf $1   ;;
+            *.bz2)       bunzip2 $1   ;;
+            *.rar)       unrar x $1   ;;
+            *.gz)        gunzip $1    ;;
+            *.tar)       tar xf $1    ;;
+            *.tbz2)      tar xjf $1   ;;
+            *.tgz)       tar xzf $1   ;;
+            *.zip)       unzip $1     ;;
+            *.Z)         uncompress $1;;
+            *.7z)        7z x $1      ;;
+            *.deb)       ar x $1      ;;
+            *.tar.xz)    tar xf $1    ;;
+            *.tar.zst)   unzstd $1    ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }

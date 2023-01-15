@@ -1,6 +1,8 @@
-export EDITOR=nvim
-export VISUAL=code
-export TERM=xterm-256color #??
+export EDITOR='nvim'
+export GIT_EDITOR='nvim'
+export SHELL='/bin/zsh'
+export VISUAL='code'
+export TERM=xterm-256color
 
 export ANDROID_SDK="$HOME/Android/Sdk"
 export GOPATH="$HOME/go"
@@ -16,6 +18,8 @@ export PATH="$HOME/.cargo/bin":$PATH
 export PATH=$GOPATH:$PATH
 export PATH="$GOPATH/bin":$PATH
 
+export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+
 export MANPAGER="sh -c 'col -bx | bat --color=always --decorations=always --tabs=2 -l man -p'"
 export MANWIDTH=999
 
@@ -27,6 +31,3 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=50000
 export SAVEHIST=10000
-setopt INC_APPEND_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE # if the command starts with a space it wont be saved in the history
