@@ -17,6 +17,7 @@ export PATH="$ANDROID_SDK/tools/bin/sdkmanager":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
 export PATH=$GOPATH:$PATH
 export PATH="$GOPATH/bin":$PATH
+export PATH="$HOME/.ghcup/bin:$PATH"
 
 export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
