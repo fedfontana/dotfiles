@@ -6,4 +6,4 @@
 [push]
 	autoSetupRemote = true
 [core]
-	excludesfile = $HOME/.gitignore_global
+	excludesfile = /Users/fonta/.gitignore_global
