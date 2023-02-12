@@ -10,7 +10,7 @@ setopt auto_cd
 setopt multios
 
 # Disable beeping
-#unsetopt BEEP
+unsetopt BEEP
 
 # History command configuration
 # Remove unnecessary blanks before adding a command to the history
@@ -48,6 +48,14 @@ _comp_options+=(globdots)
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
+# Put cursor at the end of the line when using arrows to go trough history
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
 export ZSHCONFIGDIR=$HOME/.config/zsh
 
 # Useful Functions
@@ -74,3 +82,4 @@ if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
 fi
 # Use fzf key bindings
 source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+
