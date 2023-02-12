@@ -50,7 +50,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias neovim='nvim'
 
-alias bat='bat --color=always --decorations=always --paging --tabs=2'
+alias bat='bat --color=always --decorations=always --tabs=2'
 
 # Remove all .class files in the current directory (recursively)
 alias rmj='find . -name "*.class" -exec rm -f {} \;'
