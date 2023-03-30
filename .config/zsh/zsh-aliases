@@ -107,3 +107,11 @@ function extract
         echo "'$1' is not a valid file"
     fi
 }
+
+function webtop
+{
+    tag=${1:-"ubuntu-xfce"}
+    port=${2:-3000}
+    docker run --rm -e PUID=1000 -e PGID=1000 -p $port:3000 lscr.io/linuxserver/webtop:$tag
+}
+

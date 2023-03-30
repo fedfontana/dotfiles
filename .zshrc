@@ -83,3 +83,5 @@ fi
 # Use fzf key bindings
 source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
 
+
+source /Users/fonta/.docker/init-zsh.sh || true # Added by Docker Desktop
