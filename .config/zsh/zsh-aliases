@@ -19,6 +19,11 @@ alias pscpu='ps auxf | sort -nr -k 3 | head -5'
 alias r='ranger'
 alias o='open'
 
+# Rust
+alias cr='cargo run'
+alias crr='cargo run --release'
+alias ct='cargo test'
+
 # Python
 alias py='python3'
 alias pip='pip3'
