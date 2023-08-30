@@ -7,6 +7,11 @@ export TERM=xterm-256color
 #TMP
 export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 
+# Eclipse-Maven extension bullshit
+export M2_HOME="/opt/homebrew/Cellar/maven/3.9.2"
+export M2="$M2_HOME/bin"
+export PATH="$M2:$PATH"
+
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home"
 export ANDROID_SDK="$HOME/Library/Android/Sdk"
 export ANDROID_HOME="$HOME/Library/Android/sdk"

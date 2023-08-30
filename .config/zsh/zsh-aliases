@@ -72,6 +72,8 @@ alias dotp='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME push'
 alias dotst='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME status'
 alias dotd='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME diff'
 
+# Usage pdfjoin outfile infile1 infile2...
+alias pdfjoin='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/MacOS/join -o'
 
 #function d () {
 #  if [[ -n $1 ]]; then
@@ -114,6 +116,11 @@ function extract
     else
         echo "'$1' is not a valid file"
     fi
+}
+
+function diffstr
+{
+    diff <( printf '%s\n' $1 ) <( printf '%s\n' $2 )
 }
 
 function webtop
