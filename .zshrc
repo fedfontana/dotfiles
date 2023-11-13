@@ -74,6 +74,8 @@ zsh_add_plugin "hlissner/zsh-autopair"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun" # Added by Bun
+
 eval "$(starship init zsh)"
 
 # Setup fzf
@@ -84,4 +86,5 @@ fi
 source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
 
 
-source /Users/fonta/.docker/init-zsh.sh || true # Added by Docker Desktop
+source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
+

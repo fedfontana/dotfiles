@@ -37,6 +37,9 @@ export PATH="$HOME/.emacs.d/bin:$PATH"
 
 export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 export MANPAGER="sh -c 'col -bx | bat --color=always --decorations=always --tabs=2 -l man -p'"
 export MANWIDTH=999
 

@@ -58,6 +58,9 @@ alias neovim='nvim'
 
 alias bat='bat --color=always --decorations=always --tabs=2'
 
+# Find what's using ports, pid, and users
+alias used-ports='lsof -i -P -n'
+
 # Remove all .class files in the current directory (recursively)
 alias rmj='find . -name "*.class" -exec rm -f {} \;'
 
